@@ -30,6 +30,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
+          projectPath: GithubActionsUnity
 
       # Output
       - uses: actions/upload-artifact@v4
