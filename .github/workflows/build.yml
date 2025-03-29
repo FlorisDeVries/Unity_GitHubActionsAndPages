@@ -13,6 +13,11 @@ jobs:
         with:
           lfs: true
 
+      - name: Clean up disk space
+        run: |
+          docker system prune -af
+          sudo rm -rf /var/lib/docker
+
       # Cache
       - uses: actions/cache@v3
         with:
