@@ -7,19 +7,19 @@ jobs:
     name: Build project
     runs-on: ubuntu-latest
     steps:
+      # Clean Up Unnecessary Files Before Building
+      - name: Clean up disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          docker system prune --all --force --volumes
+
       # Checkout
       - name: Checkout project branch
         uses: actions/checkout@v4
         with:
           lfs: true
-
-      # Cache
-      - uses: actions/cache@v3
-        with:
-          path: GithubActionsUnity/Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
 
       # Build
       - name: Build project
@@ -58,3 +58,9 @@ jobs:
           git add -A
           git commit -m "Deploy WebGL build to GitHub Pages"
           git push origin WebGLBuild
+
+      # Free Up Space After the Build
+      - name: Clean up after build
+        run: |
+          docker system prune --all --force --volumes
+          rm -rf build
