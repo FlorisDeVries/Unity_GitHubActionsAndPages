@@ -1,4 +1,4 @@
-# Unity-GitHubActions: Minimal project showing the unity + GitHub actions capabilities
+# Unity-GitHubActions: Project showing the Unity + GitHub Actions build and deploy
 
 ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
 
