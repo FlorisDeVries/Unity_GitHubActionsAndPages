@@ -39,6 +39,7 @@ jobs:
         with:
           targetPlatform: WebGL
           projectPath: GithubActionsUnity
+          dockerOptions: "--user $(id -u):$(id -g)"
 
       # Fix permissions after build
       - name: Fix file permissions
