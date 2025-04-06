@@ -39,11 +39,7 @@ jobs:
         with:
           targetPlatform: WebGL
           projectPath: GithubActionsUnity
-
-      # Fix permissions inside Docker container
-      - name: Fix file permissions inside Docker
-        run: |
-          docker exec $(docker ps -q -f ancestor=unityci/editor) chown -R $(id -u):$(id -g) /github/workspace/GithubActionsUnity/build
+          postBuildCommands: "chown -R 1001:1001 /github/workspace/GithubActionsUnity/build"
 
       # Upload the build artifact
       - name: Upload WebGL build artifact
