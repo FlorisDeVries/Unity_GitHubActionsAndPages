@@ -44,8 +44,9 @@ jobs:
       - name: Fix file permissions
         run: sudo chown -R $USER:$USER GithubActionsUnity
 
-      # Output
-      - uses: actions/upload-artifact@v4
+      # Upload the build artifact
+      - name: Upload WebGL build artifact
+        uses: actions/upload-artifact@v4
         with:
           name: WebGL-Build
           path: build/WebGL
@@ -56,11 +57,20 @@ jobs:
         with:
           ref: WebGLBuild
 
-      # Copy the build files to the WebGLBuild branch
-      - name: Copy artifacts to WebGLBuild branch
+      # Clean up the WebGLBuild branch
+      - name: Clean up WebGLBuild branch
         run: |
-          rm -rf *
-          cp -R build/WebGL/WebGL/* .
+          sudo rm -rf *
+
+      # Download the build artifact
+      - name: Download WebGL build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: WebGL-Build
+
+      # Move the build files to the root directory
+      - name: Move build files
+        run: mv build/WebGL/* .
         
       # Commit and push the changes to the WebGLBuild branch
       - name: Commit and push changes to WebGLBuild branch
