@@ -39,7 +39,10 @@ jobs:
         with:
           targetPlatform: WebGL
           projectPath: GithubActionsUnity
-          postBuildCommands: "chown -R 1001:1001 /github/workspace/GithubActionsUnity/build"
+      
+      # Fix permissions after build
+      - name: Fix file permissions after build
+        run: sudo chown -R $USER:$USER GithubActionsUnity
 
       # Upload the build artifact
       - name: Upload WebGL build artifact
