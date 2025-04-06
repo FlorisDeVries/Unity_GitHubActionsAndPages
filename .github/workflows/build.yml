@@ -39,10 +39,6 @@ jobs:
         with:
           targetPlatform: WebGL
           projectPath: GithubActionsUnity
-      
-      # Fix permissions after build
-      - name: Fix file permissions after build
-        run: sudo chown -R $USER:$USER GithubActionsUnity
 
       # Upload the build artifact
       - name: Upload WebGL build artifact
@@ -51,38 +47,32 @@ jobs:
           name: WebGL-Build
           path: build/WebGL
 
-      # Checkout the `WebGLBuild` branch
-      - name: Checkout WebGLBuild branch
-        uses: actions/checkout@v4
-        with:
-          ref: WebGLBuild
-
-      # Clean up the WebGLBuild branch
-      - name: Clean up WebGLBuild branch
-        run: |
-          sudo rm -rf *
-
-      # Download the build artifact
-      - name: Download WebGL build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: WebGL-Build
-
-      # Move the build files to the root directory
-      - name: Move build files
-        run: mv build/WebGL/* .
-        
-      # Commit and push the changes to the WebGLBuild branch
-      - name: Commit and push changes to WebGLBuild branch
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add -A
-          git commit -m "Deploy WebGL build to GitHub Pages"
-          git push origin WebGLBuild
-
       # Free Up Space After the Build
       - name: Clean up after build
         run: |
           docker system prune --all --force --volumes
           rm -rf build
+
+  deploy:
+    name: Deploy to WebGLBuild Branch
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout WebGLBuild branch
+        uses: actions/checkout@v4
+        with:
+          ref: WebGLBuild
+
+      - name: Copy build files
+        run: |
+          rm -rf *
+          cp -r ../build/WebGL/* ./
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add .
+          git commit -m 'Deploy WebGL build from workflow run'
+          git push origin WebGLBuild
+
