@@ -57,10 +57,15 @@ jobs:
         with:
           ref: WebGLBuild
 
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: WebGL-Build
+
       - name: Copy build files
         run: |
           rm -rf *
-          cp -r ../build/WebGL/* ./
+          cp -r WebGL-Build/* ./
 
       - name: Commit and push changes
         run: |
@@ -69,4 +74,3 @@ jobs:
           git add .
           git commit -m 'Deploy WebGL build from workflow run'
           git push origin WebGLBuild
-
