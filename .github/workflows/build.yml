@@ -47,12 +47,6 @@ jobs:
           name: WebGL-Build
           path: build/WebGL
 
-      # Free Up Space After the Build
-      - name: Clean up after build
-        run: |
-          docker system prune --all --force --volumes
-          rm -rf build
-
   deploy:
     name: Deploy to WebGLBuild Branch
     runs-on: ubuntu-latest
