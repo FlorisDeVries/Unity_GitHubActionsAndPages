@@ -63,6 +63,12 @@ jobs:
         with:
           name: WebGL-Build
 
+      - name: Move files to root
+        run: |
+          tree -a
+          mv WebGL/* ./
+          rm -rf WebGL
+
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions'
