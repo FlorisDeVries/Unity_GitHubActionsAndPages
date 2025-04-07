@@ -65,9 +65,6 @@ jobs:
           name: WebGL-Build
           path: mock-build/WebGL
 
-      - name: Run deploy job
-        uses: ./
-
   deploy:
     name: Deploy to WebGLBuild Branch
     runs-on: ubuntu-latest
