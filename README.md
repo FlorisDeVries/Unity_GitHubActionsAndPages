@@ -23,5 +23,9 @@ If you would like to apply this simple workflow to your Unity project, follow th
 6. **Create Personal Access Token**:
    1. [Personal Access Tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
    2. 'Contents' => Read/Write
+   3. ACTIONS_PAT
 7. **Add environment secrets**:
+   1. UNITY_EMAIL
+   2. UNITY_LICENSE
+   3. UNITY_PASSWORD
 8. **Try it out!**:
