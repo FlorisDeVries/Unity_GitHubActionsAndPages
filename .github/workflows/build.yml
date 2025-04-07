@@ -61,11 +61,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: WebGL-Build
+          path: ./artifact
 
       - name: Copy build files
         run: |
           rm -rf *
-          cp -r WebGL-Build/* ./
+          cp -r artifact/WebGL-Build/* ./
 
       - name: Commit and push changes
         run: |
