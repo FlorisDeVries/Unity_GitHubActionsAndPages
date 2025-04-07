@@ -71,7 +71,7 @@ jobs:
       - name: Copy build files
         run: |
           rm -rf *
-          cp -r ./artifact/WebGL/* ./
+          cp -r ./artifact/WebGL/. ./
 
       - name: Commit and push changes
         run: |
