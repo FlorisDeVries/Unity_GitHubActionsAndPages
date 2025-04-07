@@ -50,7 +50,7 @@ jobs:
   deploy:
     name: Deploy to WebGLBuild Branch
     runs-on: ubuntu-latest
-    needs: mock-deploy
+    needs: build
     steps:
       - name: Checkout WebGLBuild branch
         uses: actions/checkout@v4
