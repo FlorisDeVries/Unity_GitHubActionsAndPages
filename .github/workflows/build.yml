@@ -65,12 +65,11 @@ jobs:
       - name: List artifact contents
         run: |
           ls -la ./
-          ls -la ./WebGL
 
       - name: Copy build files
         run: |
           rm -rf *
-          cp -r ./WebGL/* ./
+          cp -r ./Build ./TemplateData ./index.html ./
 
       - name: Commit and push changes
         run: |
