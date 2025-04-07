@@ -3,72 +3,54 @@ name: Build and Deploy to Github Pages 🚀
 on: [workflow_dispatch, push, pull_request]
 
 jobs:
-  # build:
-  #   name: Build project
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     # Clean Up Unnecessary Files Before Building
-  #     - name: Clean up disk space
-  #       run: |
-  #         sudo rm -rf /usr/share/dotnet
-  #         sudo rm -rf /usr/local/lib/android
-  #         sudo rm -rf /opt/ghc
-  #         docker system prune --all --force --volumes
-
-  #     # Checkout
-  #     - name: Checkout project branch
-  #       uses: actions/checkout@v4
-  #       with:
-  #         lfs: true
-
-  #     # Cache
-  #     - uses: actions/cache@v3
-  #       with:
-  #         path: GithubActionsUnity/Library
-  #         key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-  #         restore-keys: |
-  #           Library-
-
-  #     # Build
-  #     - name: Build project
-  #       uses: game-ci/unity-builder@v4.3.0
-  #       env:
-  #         UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  #         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-  #         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-  #       with:
-  #         targetPlatform: WebGL
-  #         projectPath: GithubActionsUnity
-
-  #     # Upload the build artifact
-  #     - name: Upload WebGL build artifact
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: WebGL-Build
-  #         path: build/WebGL
-  mock-deploy:
-    name: Mock Deploy for Faster Iteration
+  build:
+    name: Build project
     runs-on: ubuntu-latest
     steps:
-      - name: Create mock build artifact
+      # Clean Up Unnecessary Files Before Building
+      - name: Clean up disk space
         run: |
-          mkdir -p mock-build/WebGL
-          echo 'Hello, WebGL!' > mock-build/WebGL/index.html
-          mkdir mock-build/WebGL/Build
-          echo 'Build files here' > mock-build/WebGL/Build/main.js
-          mkdir mock-build/WebGL/TemplateData
-          echo 'Template data' > mock-build/WebGL/TemplateData/config.json
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          docker system prune --all --force --volumes
 
-      - name: Upload mock artifact
+      # Checkout
+      - name: Checkout project branch
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # Cache
+      - uses: actions/cache@v3
+        with:
+          path: GithubActionsUnity/Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      # Build
+      - name: Build project
+        uses: game-ci/unity-builder@v4.3.0
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: WebGL
+          projectPath: GithubActionsUnity
+
+      # Upload the build artifact
+      - name: Upload WebGL build artifact
         uses: actions/upload-artifact@v4
         with:
           name: WebGL-Build
-          path: mock-build/WebGL
+          path: build/WebGL
 
   deploy:
     name: Deploy to WebGLBuild Branch
     runs-on: ubuntu-latest
-    needs: mock-deploy
+    needs: build
     steps:
       - name: Checkout WebGLBuild branch
         uses: actions/checkout@v4
@@ -80,10 +62,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: WebGL-Build
-
-      - name: List artifact contents
-        run: |
-          ls -la ./
 
       - name: Commit and push changes
         run: |
