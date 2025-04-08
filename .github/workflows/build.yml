@@ -65,8 +65,9 @@ jobs:
 
       - name: Move files to root
         run: |
-          tree -a
-          sudo mv -f WebGL/* ./
+          mv WebGL/Build/* ./Build/
+          mv WebGL/TemplateData/* ./TemplateData/
+          mv WebGL/index.html ./
           rm -rf WebGL
 
       - name: Commit and push changes
