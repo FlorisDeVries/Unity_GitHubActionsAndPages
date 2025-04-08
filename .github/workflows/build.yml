@@ -63,6 +63,12 @@ jobs:
         with:
           name: WebGL-Build
 
+      - name: Add _headers file
+        run: |
+          echo "/Build/*\n  Content-Encoding: br\n  Content-Type: application/javascript" > _headers
+          echo "/TemplateData/*\n  Content-Encoding: br\n  Content-Type: text/css" >> _headers
+          echo "/index.html\n  Content-Encoding: br\n  Content-Type: text/html" >> _headers
+
       - name: Move files to root
         run: |
           mv WebGL/Build/* ./Build/
