@@ -12,7 +12,7 @@ Each time a new PR is merged into master the `some-pipeline-name` workflow will 
 
 ## Setup instructions
 If you would like to apply this simple workflow to your Unity project, follow these steps:
-1. **Unity Settings**: Brotli compression format
+1. **Unity Settings**: Disabled compression format
 
 <img src="img/unity-settings.png" alt="Unity Settings" width="400"/>
 
