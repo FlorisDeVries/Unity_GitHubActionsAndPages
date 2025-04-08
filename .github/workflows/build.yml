@@ -69,8 +69,8 @@ jobs:
       - name: Move files to root
         run: |
           tree -a
-          mkdir ./Build/
-          mkdir ./TemplateData/
+          mkdir -p ./Build/
+          mkdir -p ./TemplateData/
           mv WebGL/Build/* ./Build/
           mv WebGL/TemplateData/* ./TemplateData/
           mv WebGL/index.html ./
