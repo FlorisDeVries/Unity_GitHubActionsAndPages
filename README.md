@@ -4,6 +4,8 @@
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/FlorisDeVries/Unity_GitHubActionsAndPages/build-and-deploy-WebGL.yml)
 ![GitHub Pages](https://img.shields.io/website?url=https%3A%2F%2Fflorisdev.me%2FUnity_GitHubActionsAndPages)
 
+[![Actions status](https://github.com/FlorisDeVries/Unity_GitHubActionsAndPages/actions/workflows/build-and-deploy-WebGL.yml/badge.svg)](https://github.com/FlorisDeVries/Unity_GitHubActionsAndPages/actions/workflows/build-and-deploy-WebGL.yml)
+
 ![GitHub repo size](https://img.shields.io/github/repo-size/FlorisDeVries/Unity_GitHubActionsAndPages)
 ![Last Commit](https://img.shields.io/github/last-commit/FlorisDeVries/Unity_GitHubActionsAndPages)
 
