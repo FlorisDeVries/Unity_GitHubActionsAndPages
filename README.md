@@ -1,11 +1,12 @@
 # Unity_GitHubActionsAndPages: Project showing the Unity + GitHub Actions build and deploy to GitHub Pages
 
-![License](https://img.shields.io/github/license/florisdev/Unity_GitHubActionsAndPages)
-![Build Status](https://github.com/florisdev/Unity_GitHubActionsAndPages/actions/workflows/build-and-deploy-WebGL.yml/badge.svg)
 ![GitHub Pages](https://img.shields.io/website?url=https%3A%2F%2Fflorisdev.me%2FUnity_GitHubActionsAndPages)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
-![GitHub repo size](https://img.shields.io/github/repo-size/florisdev/Unity_GitHubActionsAndPages)
-![Last Commit](https://img.shields.io/github/last-commit/florisdev/Unity_GitHubActionsAndPages)
+[![Actions status](https://github.com/FlorisDeVries/Unity_GitHubActionsAndPages/actions/workflows/build-and-deploy-WebGL.yml/badge.svg)](https://github.com/FlorisDeVries/Unity_GitHubActionsAndPages/actions/workflows/build-and-deploy-WebGL.yml)
+
+![GitHub repo size](https://img.shields.io/github/repo-size/FlorisDeVries/Unity_GitHubActionsAndPages)
+![Last Commit](https://img.shields.io/github/last-commit/FlorisDeVries/Unity_GitHubActionsAndPages)
 
 A sample Unity project demonstrating how to **build** and **deploy** a WebGL build using **GitHub Actions** and host it via **GitHub Pages**.  
 This project uses [game.ci](https://game.ci/) for Unity CI integration.
@@ -29,6 +30,7 @@ The final project will be published on [GitHub Pages](https://pages.github.com)
 
 Each time a new PullRequest is merged into master the `build-and-deploy-WebGL` workflow will trigger, building and publishing the Unity project for WebGL.
 The build artifact is then pushed to the `WebGLBuild` branch. Which in turn is used as a source for GitHub pages.
+
 ---
 
 ## 🚀 Live Demo
