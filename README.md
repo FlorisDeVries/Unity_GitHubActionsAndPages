@@ -1,9 +1,9 @@
 # Unity_GitHubActionsAndPages: Project showing the Unity + GitHub Actions build and deploy to GitHub Pages
 
-![GitHub Pages](https://img.shields.io/website?url=https%3A%2F%2Fflorisdev.me%2FUnity_GitHubActionsAndPages)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
-
 [![Actions status](https://github.com/FlorisDeVries/Unity_GitHubActionsAndPages/actions/workflows/build-and-deploy-WebGL.yml/badge.svg)](https://github.com/FlorisDeVries/Unity_GitHubActionsAndPages/actions/workflows/build-and-deploy-WebGL.yml)
+
+[![GitHub Pages](https://img.shields.io/website?url=https%3A%2F%2Fflorisdev.me%2FUnity_GitHubActionsAndPages)](https://florisdev.me/Unity_GitHubActionsAndPages/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/FlorisDeVries/Unity_GitHubActionsAndPages)
 ![Last Commit](https://img.shields.io/github/last-commit/FlorisDeVries/Unity_GitHubActionsAndPages)
