@@ -28,8 +28,7 @@ The workflow heavily relies on the use of [game.ci](https://game.ci/) and [GitHu
 The final project will be published on [GitHub Pages](https://pages.github.com)
 
 Each time a new PullRequest is merged into master the `build-and-deploy-WebGL` workflow will trigger, building and publishing the Unity project for WebGL.
-The build artifact is then pushed to the `WebGL` branch. Which in turn is used as a source for GitHub pages.
-
+The build artifact is then pushed to the `WebGLBuild` branch. Which in turn is used as a source for GitHub pages.
 ---
 
 ## 🚀 Live Demo
