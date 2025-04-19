@@ -95,7 +95,7 @@ git push origin WebGLBuild
 4. Update the file
       1. `Line 30 & 44`: Point to your Unity project folder
       2. `Line 61 & 85`: Change `WebGLBuild` with your build branch name
-      3. `Line 85`: Change `FlorisDeVries/GithubActions` to your repository name
+      3. `Line 85`: Change `FlorisDeVries/Unity_GitHubActionsAndPages` to your repository name
 5. Rename the workflow and press `Commit changes...`
 
 ---

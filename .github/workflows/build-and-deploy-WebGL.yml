@@ -82,4 +82,4 @@ jobs:
           git config --global user.email 'github-actions@github.com'
           git add .
           git commit -m 'Deploy WebGL build from workflow run'
-          git push https://x-access-token:${{ secrets.ACTIONS_PAT }}@github.com/FlorisDeVries/GithubActions.git HEAD:WebGLBuild
+          git push https://x-access-token:${{ secrets.ACTIONS_PAT }}@github.com/FlorisDeVries/Unity_GitHubActionsAndPages.git HEAD:WebGLBuild
